@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Zachary Pyskaty | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f6f8;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        nav {
+            background-color: #172554;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h2 {
+            font-size: 22px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #93c5fd;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #172554, #1e3a8a);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            font-weight: normal;
+            color: #bfdbfe;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .button-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .button-secondary:hover {
+            background-color: white;
+            color: #172554;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #172554;
+            margin-bottom: 15px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+            color: #6b7280;
+        }
+
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .skills {
+            background-color: #f4f6f8;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .skill {
+            background-color: white;
+            padding: 14px 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-4px);
+        }
+
+        .projects {
+            background-color: white;
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .project-card {
+            background-color: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            border-top: 4px solid #2563eb;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            color: #1d4ed8;
+            font-size: 22px;
+        }
+
+        .project-card p {
+            color: #4b5563;
+        }
+
+        .experience {
+            background-color: #f4f6f8;
+        }
+
+        .experience-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .experience-item {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+        }
+
+        .experience-item h3 {
+            color: #172554;
+            margin-bottom: 5px;
+        }
+
+        .experience-item h4 {
+            color: #2563eb;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+
+        .contact {
+            background-color: #172554;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 14px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 60px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>Zachary Pyskaty</h2>
+
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <h1>Zachary Pyskaty</h1>
+
+            <h2>Finance Student | Analyst | Investor</h2>
+
+            <p>
+                I am a Rutgers Business School finance student with experience in
+                financial analysis, data analytics, investment strategy, and business
+                consulting who enjoys using data to solve real-world business problems.
+            </p>
+
+            <a href="#projects" class="button">View My Projects</a>
+
+            <a href="#contact" class="button button-secondary">Contact Me</a>
+
+        </div>
+
+    </header>
+
+
+    <section class="about" id="about">
+
+        <h2>About Me</h2>
+
+        <p class="section-description">
+            Finance, analytical thinking, and real-world business experience.
+        </p>
+
+        <div class="about-content">
+
+            <p>
+                I am pursuing a Bachelor of Science in Finance with a minor in History
+                at Rutgers Business School and expect to graduate in December 2027.
+                My interests include investment analysis, financial modeling, real estate,
+                and using data to support better business decisions. Through internships,
+                investing experience, and consulting projects, I have gained experience
+                analyzing financial information, identifying business opportunities,
+                and presenting strategic recommendations.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="skills" id="skills">
+
+        <h2>Skills</h2>
+
+        <p class="section-description">
+            Technical, financial, and professional skills developed through coursework
+            and real-world experience.
+        </p>
+
+        <div class="skills-container">
+
+            <div class="skill">Microsoft Excel</div>
+
+            <div class="skill">Financial Modeling</div>
+
+            <div class="skill">Pivot Tables</div>
+
+            <div class="skill">VLOOKUP / INDEX-MATCH</div>
+
+            <div class="skill">Variance Analysis</div>
+
+            <div class="skill">Financial Statement Analysis</div>
+
+            <div class="skill">Market Research</div>
+
+            <div class="skill">Industry Analysis</div>
+
+            <div class="skill">Bloomberg Terminal</div>
+
+            <div class="skill">Contract Review</div>
+
+            <div class="skill">Investment Research</div>
+
+            <div class="skill">PowerPoint</div>
+
+        </div>
+
+    </section>
+
+
+    <section class="projects" id="projects">
+
+        <h2>Projects</h2>
+
+        <p class="section-description">
+            Selected projects demonstrating my experience with finance, investing,
+            data analysis, and business strategy.
+        </p>
+
+        <div class="projects-container">
+
+
+            <div class="project-card">
+
+                <h3>Equity Investment Strategy</h3>
+
+                <p>
+                    Designed and executed systematic equity trading strategies using
+                    RSI, candlestick pattern analysis, historical price data, and
+                    volume analysis. Back-tested entry and exit signals while applying
+                    position sizing and risk management principles.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>Construction Finance & Data Analysis</h3>
+
+                <p>
+                    Built Excel models using expense data from multiple active construction
+                    projects to compare costs against budgets, identify margin variance,
+                    and analyze recurring drivers of profitability.
+                </p>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>Faye Travel Insurance Growth Strategy</h3>
+
+                <p>
+                    Worked as a strategy analyst through a Rutgers Business School
+                    consulting program to analyze growth challenges at a $100M+
+                    Insurtech company. Conducted executive interviews, competitive
+                    benchmarking, and process analysis before presenting strategic
+                    recommendations to company leadership.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="experience" id="experience">
+
+        <h2>Experience</h2>
+
+        <p class="section-description">
+            Professional experiences that have strengthened my finance,
+            analytical, and leadership skills.
+        </p>
+
+        <div class="experience-container">
+
+            <div class="experience-item">
+
+                <h3>Simpson & Brown</h3>
+
+                <h4>Finance & Data Analytics Intern | May 2026 – August 2026</h4>
+
+                <p>
+                    Analyzed construction project data, customer contracts, budgets,
+                    and expenses across projects ranging from approximately $500K to $5M.
+                    Built Excel models to identify cost variance and profitability drivers
+                    and helped support documentation for additional billable project scope.
+                </p>
+
+            </div>
+
+
+            <div class="experience-item">
+
+                <h3>Vernon Equity LLC</h3>
+
+                <h4>Equity Strategist | August 2025 – January 2026</h4>
+
+                <p>
+                    Developed and tested equity trading strategies using technical
+                    analysis, historical price and volume data, position sizing,
+                    and real-time risk management.
+                </p>
+
+            </div>
+
+
+            <div class="experience-item">
+
+                <h3>The Lawrenceville School – Summer Scholars Program</h3>
+
+                <h4>House Fellow | July 2025</h4>
+
+                <p>
+                    Supervised residential life for 30–40 middle school students,
+                    directed a team of counselors, and managed daily activity
+                    programming, academic support, schedules, and student accountability.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="contact" id="contact">
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            Feel free to connect with me on LinkedIn or contact me by email.
+        </p>
+
+        <a
+            href="https://www.linkedin.com/in/zachary-pyskaty"
+            class="button"
+            target="_blank">
+            LinkedIn
+        </a>
+
+        <a
+            href="mailto:pyskatyzachary@gmail.com"
+            class="button">
+            Email Me
+        </a>
+
+    </section>
+
+
+    <footer>
+
+        <p>© 2026 Zachary Pyskaty | Rutgers Business School</p>
+
+    </footer>
+
+</body>
+</html>
